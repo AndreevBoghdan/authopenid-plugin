@@ -792,7 +792,8 @@ class AuthOpenIdPlugin(Component):
             # openid_url included with the error. Give a generic
             # failure message. The library should supply debug
             # information in a log.
-            message = 'Verification failed.'
+            self.env.log.debug('Verification failed.')
+            req.redirect(req.abs_href(req.path_info))
 
         self._commit_oidsession(oidsession, req)
 
